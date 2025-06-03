@@ -1,12 +1,26 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { LandingComponent } from './landing/landing.component';
+
 
 export const routes: Routes = [
-    {path: '',
-        component: AppComponent,
+    {
+      path: '',
+      redirectTo: 'apresentacao',
+      pathMatch: 'full'
     },
-    {path: 'cadastro',
-        component: CadastroComponent
+    {
+      path: 'apresentacao',
+      component: LandingComponent
+    },
+    {
+      path: 'cadastro',
+      component: CadastroComponent
+    },
+    {
+      path: 'menu',
+      component: AppComponent
     }
-];
+  ];
+  
