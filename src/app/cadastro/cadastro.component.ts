@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CadastroService } from './cadastro.service';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
+  imports: [CommonModule, ReactiveFormsModule],
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
