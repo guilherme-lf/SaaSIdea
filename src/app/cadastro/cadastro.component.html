@@ -1,1 +1,90 @@
-<p>cadastro works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2 class="text-center mb-4">Cadastro</h2>
+  
+        <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+          
+          <!-- Dados Pessoais -->
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input id="nome" type="text" class="form-control" formControlName="nome" />
+            <div *ngIf="cadastroForm.get('nome')?.invalid && cadastroForm.get('nome')?.touched" class="text-danger">
+              Nome é obrigatório.
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input id="cpf" type="text" class="form-control" formControlName="cpf" />
+            <div *ngIf="cadastroForm.get('cpf')?.invalid && cadastroForm.get('cpf')?.touched" class="text-danger">
+              CPF é obrigatório.
+            </div>
+          </div>
+  
+          <!-- Contato -->
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input id="telefone" type="text" class="form-control" formControlName="telefone" />
+            <div *ngIf="cadastroForm.get('telefone')?.invalid && cadastroForm.get('telefone')?.touched" class="text-danger">
+              Telefone é obrigatório.
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" formControlName="email" />
+            <div *ngIf="cadastroForm.get('email')?.touched && cadastroForm.get('email')?.errors" class="text-danger">
+              <div *ngIf="cadastroForm.get('email')?.errors?.['required']">Email é obrigatório.</div>
+              <div *ngIf="cadastroForm.get('email')?.errors?.['email']">Email inválido.</div>
+            </div>
+          </div>
+  
+          <!-- Endereço -->
+          <div class="mb-3">
+            <label for="rua" class="form-label">Rua</label>
+            <input id="rua" type="text" class="form-control" formControlName="rua" />
+          </div>
+  
+          <div class="mb-3">
+            <label for="numero" class="form-label">Número</label>
+            <input id="numero" type="text" class="form-control" formControlName="numero" />
+          </div>
+  
+          <div class="mb-3">
+            <label for="cidade" class="form-label">Cidade</label>
+            <input id="cidade" type="text" class="form-control" formControlName="cidade" />
+          </div>
+  
+          <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <input id="estado" type="text" class="form-control" formControlName="estado" />
+          </div>
+  
+          <div class="mb-4">
+            <label for="cep" class="form-label">CEP</label>
+            <input id="cep" type="text" class="form-control" formControlName="cep" />
+          </div>
+  
+          <!-- Acesso -->
+          <div class="mb-4">
+            <label for="senha" class="form-label">Senha</label>
+            <input id="senha" type="password" class="form-control" formControlName="senha" />
+            <div *ngIf="cadastroForm.get('senha')?.touched && cadastroForm.get('senha')?.errors" class="text-danger">
+              <div *ngIf="cadastroForm.get('senha')?.errors?.['required']">Senha é obrigatória.</div>
+              <div *ngIf="cadastroForm.get('senha')?.errors?.['minlength']">Mínimo de 6 caracteres.</div>
+            </div>
+          </div>
+  
+          <!-- Botão -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary" [disabled]="cadastroForm.invalid">
+              Cadastrar
+            </button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  
