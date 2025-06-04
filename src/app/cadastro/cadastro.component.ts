@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CadastroService } from './cadastro.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
@@ -44,39 +46,39 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  cadastrar(): void {
-  if (this.cadastroForm.valid) {
-    const usuario = this.cadastroForm.value;
+  //cadastrar(): void {
+ // if (this.cadastroForm.valid) {
+   // const usuario = this.cadastroForm.value;
 
     // Exibe os dados no console
-    console.log('Dados do usuário:');
-    console.log('Nome:', usuario.nome);
-    console.log('CPF:', usuario.cpf);
-    console.log('Telefone:', usuario.telefone);
-    console.log('Email:', usuario.email);
-    console.log('Endereço:', {
-      rua: usuario.rua,
-      numero: usuario.numero,
-      cidade: usuario.cidade,
-      estado: usuario.estado,
-      cep: usuario.cep
-    });
-    console.log('Senha:', usuario.senha);
+   // console.log('Dados do usuário:');
+   // console.log('Nome:', usuario.nome);
+   // console.log('CPF:', usuario.cpf);
+    //console.log('Telefone:', usuario.telefone);
+    //console.log('Email:', usuario.email);
+    //console.log('Endereço:', {
+     //rua: usuario.rua,
+     // numero: usuario.numero,
+      //cidade: usuario.cidade,
+     // estado: usuario.estado,
+     // cep: usuario.cep
+   // });
+    //console.log('Senha:', usuario.senha);
 
     // Aqui você pode chamar o serviço para salvar
-    this.cadastroService.cadastrarUsuario(usuario).subscribe(
-      res => {
-        console.log('Usuário cadastrado com sucesso:', res);
-        alert('Cadastro realizado com sucesso!');
-        this.cadastroForm.reset();
-      },
-      err => {
-        console.error('Erro no cadastro:', err);
-        alert('Erro ao cadastrar. Tente novamente.');
-      }
-    );
-  } else {
-    alert('Preencha todos os campos obrigatórios corretamente.');
-  }
-  }
+   // this.cadastroService.cadastrarUsuario(usuario).subscribe(
+    //  res => {
+    //    console.log('Usuário cadastrado com sucesso:', res);
+      //  alert('Cadastro realizado com sucesso!');
+      //  this.cadastroForm.reset();
+   //   },
+    //  err => {
+     //   console.error('Erro no cadastro:', err);
+      //  alert('Erro ao cadastrar. Tente novamente.');
+     // }
+   // );
+ // } else {
+  //  alert('Preencha todos os campos obrigatórios corretamente.');
+ // }
+ // }
 }

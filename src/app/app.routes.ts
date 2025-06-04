@@ -16,7 +16,7 @@ export const routes: Routes = [
     },
     {
       path: 'cadastro',
-      component: CadastroComponent
+      loadComponent: () => import('./cadastro/cadastro.component').then(m => m.CadastroComponent)
     },
     {
       path: 'menu',
