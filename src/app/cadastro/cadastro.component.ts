@@ -12,15 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   styleUrls: ['./cadastro.component.css']
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
   cadastroForm!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private cadastroService: CadastroService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.cadastroForm = this.fb.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
@@ -31,8 +28,15 @@ export class CadastroComponent implements OnInit {
       cidade: [''],
       estado: [''],
       cep: [''],
-      senha: ['', [Validators.required, Validators.minLength(6)]]
-    });
+      senha: ['', [Validators.required, Validators.minLength(6)]],
+      confirmarSenha: ['']
+    }, { validators: this.senhasIguaisValidator });
+  }
+
+  senhasIguaisValidator(form: FormGroup) {
+    const senha = form.get('senha')?.value;
+    const confirmar = form.get('confirmarSenha')?.value;
+    return senha === confirmar ? null : { senhasDiferentes: true };
   }
 
   onSubmit(): void {

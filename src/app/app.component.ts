@@ -12,9 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'custom';
-  constructor(private router: Router) {}
+  exibirMenu = true;
 
-  isApresentacaoPage(): boolean {
-    return this.router.url.includes('/landing');
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      const rotaAtual = this.router.url;
+      this.exibirMenu = rotaAtual !== '/apresentacao'; // ou '/landing' conforme seu path
+    });
   }
 }
