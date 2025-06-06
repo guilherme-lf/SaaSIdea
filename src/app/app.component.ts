@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
       const rotaAtual = this.router.url;
-      this.exibirMenu = rotaAtual !== '/apresentacao'; // ou '/landing' conforme seu path
+      this.exibirMenu = !['/cadastro', '/login', '/apresentacao'].includes(rotaAtual);
     });
   }
 }

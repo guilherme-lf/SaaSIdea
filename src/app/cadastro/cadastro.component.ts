@@ -9,6 +9,7 @@ import { UsuarioService } from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-cadastro',
+  standalone: true,
   templateUrl: './cadastro.component.html',
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   styleUrls: ['./cadastro.component.css']
