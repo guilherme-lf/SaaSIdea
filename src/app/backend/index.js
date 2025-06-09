@@ -44,3 +44,26 @@ app.post('/usuarios', async (req, res) => {
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
+
+// 🔐 Rota de login
+app.post('/login', async (req, res) => {
+  const { email, senha } = req.body;
+
+  try {
+    const result = await pool.query(
+      'SELECT * FROM usuarios WHERE email = $1 AND senha = $2',
+      [email, senha]
+    );
+
+    if (result.rows.length > 0) {
+      // Login bem-sucedido
+      res.status(200).json({ mensagem: 'Login realizado com sucesso!' });
+    } else {
+      // Credenciais inválidas
+      res.status(401).json({ erro: 'Email ou senha inválidos.' });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ erro: 'Erro ao realizar login.' });
+  }
+});
