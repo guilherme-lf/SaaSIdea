@@ -21,6 +21,10 @@ export const routes: Routes = [
     {
       path: 'menu',
       component: AppComponent
+    },
+    {
+      path: 'login',
+      loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
     }
   ];
   
