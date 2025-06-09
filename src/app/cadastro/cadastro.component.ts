@@ -56,7 +56,6 @@ export class CadastroComponent implements OnInit {
       this.usuarioService.cadastrarUsuario(this.cadastroForm.value).subscribe({
         next: (res) => {
           console.log('Usuário cadastrado com sucesso!', res);
-          // Aqui você pode resetar o form ou redirecionar
           this.cadastroForm.reset();
         },
         error: (err) => {
