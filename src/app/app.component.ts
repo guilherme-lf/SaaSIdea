@@ -20,4 +20,6 @@ export class AppComponent {
       this.exibirMenu = !['/cadastro', '/login', '/apresentacao'].includes(rotaAtual);
     });
   }
+  
 }
+

@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+
+localStorage.setItem('token', 'true');
+
 @Component({
   selector: 'app-login',
   standalone: true,

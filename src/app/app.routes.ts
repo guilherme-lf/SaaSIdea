@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LandingComponent } from './landing/landing.component';
+import { AuthGuard } from './auth.guard';
 
 
 export const routes: Routes = [
@@ -20,7 +21,8 @@ export const routes: Routes = [
     },
     {
       path: 'menu',
-      component: AppComponent
+      component: AppComponent,
+      canActivate: [AuthGuard], // Protege a rota de menu
     },
     {
       path: 'login',
