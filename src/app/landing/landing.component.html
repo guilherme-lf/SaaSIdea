@@ -21,43 +21,33 @@
   <img src="" alt="Ícone do Mercado" />
 </div>
 
-<div class="container">
-    <P>Planos Individuais</P> 
-    <div class="row justify-content-center">
-      <ng-container *ngFor="let card of [1, 2, 3]">
-        <div class="col-md-4 mb-3 d-flex">
-          <div class="card w-100">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
-                With supporting text below as a natural lead-in to additional content.
-              </p>
-              <a href="#" class="btn btn-primary mt-auto">Go somewhere</a>
-            </div>
-          </div>
+<div class="container my-5 position-relative">
+  <p class="fs-4 fw-bold">Planos Individuais</p>
+
+  <!-- Botão Esquerda -->
+  <button class="scroll-btn left" (click)="scrollLeft()">
+    ‹
+  </button>
+
+  <!-- Botão Direita -->
+  <button class="scroll-btn right" (click)="scrollRight()">
+    ›
+  </button>
+
+  <!-- Container dos Cards -->
+  <div #scrollContainer class="scrolling-cards d-flex overflow-auto gap-3 pb-3">
+    <ng-container *ngFor="let plano of planos">
+      <div class="card flex-shrink-0" style="width: 18rem; min-width: 250px;">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ plano.titulo }}</h5>
+          <p class="card-text">{{ plano.descricao }}</p>
+          <a href="#" class="btn btn-primary mt-auto">Assinar</a>
         </div>
-      </ng-container>
-    </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
   
-<div class="container">
-    <P>Planos para o grupo</P> 
-    <div class="row justify-content-center">
-      <ng-container *ngFor="let card of [1, 2, 3]">
-        <div class="col-12 col-md-4 mb-3 d-flex">
-          <div class="card h-100 w-100">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
-                Descrição do plano em grupo. Conteúdo pode ser diferente dos outros.
-              </p>
-              <a href="#" class="btn btn-success mt-auto">Assinar</a>
-            </div>
-          </div>
-        </div>
-      </ng-container>
-    </div>
-  </div>
   
 
   

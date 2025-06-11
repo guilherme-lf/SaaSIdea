@@ -13,9 +13,46 @@
     overflow: hidden;
   }
   
-  .image-banner img {
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
-  }
+.image-banner img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.scrolling-cards {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.scrolling-cards > .card {
+  scroll-snap-align: start;
+}
+
+/* Botões de navegação */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 123, 255, 0.8);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.scroll-btn.left {
+  left: -0.75rem;
+}
+
+.scroll-btn.right {
+  right: -0.75rem;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 123, 255, 1);
+}
+
   
