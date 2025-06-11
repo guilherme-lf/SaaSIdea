@@ -1,3 +1,10 @@
+.logo {
+  height: 55px;
+  width: auto;
+  margin-left: 35px;
+}
+
+
 .image-banner {
     display: flex;
     justify-content: center;
