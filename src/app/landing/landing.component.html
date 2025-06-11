@@ -24,16 +24,6 @@
 <div class="container my-5 position-relative">
   <p class="fs-4 fw-bold">Planos Individuais</p>
 
-  <!-- Botão Esquerda -->
-  <button class="scroll-btn left" (click)="scrollLeft()">
-    ‹
-  </button>
-
-  <!-- Botão Direita -->
-  <button class="scroll-btn right" (click)="scrollRight()">
-    ›
-  </button>
-
   <!-- Container dos Cards -->
   <div #scrollContainer class="scrolling-cards d-flex overflow-auto gap-3 pb-3">
     <ng-container *ngFor="let plano of planos">
