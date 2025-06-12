@@ -1,0 +1,20 @@
+<h2 class="text-xl font-bold mb-4">Cadastro de Produto</h2>
+
+<form (ngSubmit)="cadastrarProduto()" #produtoForm="ngForm" class="grid gap-4">
+
+  <input type="text" placeholder="Nome do produto" [(ngModel)]="produto.nome" name="nome" required />
+  <input type="text" placeholder="Categoria" [(ngModel)]="produto.categoria" name="categoria" />
+  <input type="text" placeholder="Marca" [(ngModel)]="produto.marca" name="marca" />
+
+  <input type="number" step="0.01" placeholder="Preço de Venda" [(ngModel)]="produto.preco_venda" name="preco_venda" required />
+  <input type="number" step="0.01" placeholder="Preço de Custo" [(ngModel)]="produto.preco_custo" name="preco_custo" />
+
+  <input type="number" placeholder="Quantidade em Estoque" [(ngModel)]="produto.quantidade" name="quantidade" />
+  <input type="date" placeholder="Validade" [(ngModel)]="produto.validade" name="validade" />
+
+  <input type="text" placeholder="Código de Barras" [(ngModel)]="produto.codigo_barras" name="codigo_barras" />
+  <button type="button" (click)="gerarCodigo()">Gerar Código</button>
+
+  <button type="submit" class="bg-blue-500 text-white p-2 rounded">Salvar</button>
+
+</form>

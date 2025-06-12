@@ -1,22 +1,27 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+  private apiUrl = 'http://localhost:3000/api/usuarios'; // ✅ ATUALIZADO
 
-  private apiUrl = 'http://localhost:3000/usuarios';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getUsuarios(): Observable<any> {
-    return this.http.get(this.apiUrl);
-  }
-
+  // POST /api/usuarios
   cadastrarUsuario(usuario: any): Observable<any> {
     return this.http.post(this.apiUrl, usuario);
   }
 
+  // GET /api/usuarios
+  getUsuarios(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  // POST /api/usuarios/login
+  login(email: string, senha: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, { email, senha });
+  }
 }

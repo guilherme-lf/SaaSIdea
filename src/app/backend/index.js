@@ -2,11 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 
+const usuarioRoutes = require('./routes/usuario');
+const produtoRoutes = require('./routes/prod');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Conexão PostgreSQL
+// Conexão com PostgreSQL
 const pool = new Pool({
   user: 'guilherme',
   host: 'localhost',
@@ -15,55 +18,17 @@ const pool = new Pool({
   port: 5432,
 });
 
-// Rota GET (já existente)
-app.get('/usuarios', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM usuarios');
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).json({ erro: 'Erro ao buscar usuários' });
-  }
+// Torna a pool acessível em todas as rotas
+app.use((req, res, next) => {
+  req.pool = pool;
+  next();
 });
 
-// ✅ Nova rota POST para cadastro
-app.post('/usuarios', async (req, res) => {
-  const { nome, cpf, telefone, email, rua, numero, cidade, estado, cep, senha } = req.body;
+// Rotas organizadas
+app.use('/api/usuarios', usuarioRoutes);
+app.use('/api/produtos', produtoRoutes);
 
-  try {
-    await pool.query(
-      'INSERT INTO usuarios (nome, cpf, telefone, email, rua, numero, cidade, estado, cep, senha) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
-      [nome, cpf, telefone, email, rua, numero, cidade, estado, cep, senha]
-    );
-    res.status(201).send('Usuário cadastrado com sucesso!');
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao cadastrar usuário' });
-  }
-});
-
+// Inicia o servidor
 app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
-});
-
-// 🔐 Rota de login
-app.post('/login', async (req, res) => {
-  const { email, senha } = req.body;
-
-  try {
-    const result = await pool.query(
-      'SELECT * FROM usuarios WHERE email = $1 AND senha = $2',
-      [email, senha]
-    );
-
-    if (result.rows.length > 0) {
-      // Login bem-sucedido
-      res.status(200).json({ mensagem: 'Login realizado com sucesso!' });
-    } else {
-      // Credenciais inválidas
-      res.status(401).json({ erro: 'Email ou senha inválidos.' });
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao realizar login.' });
-  }
+  console.log('🚀 Servidor rodando na porta 3000');
 });

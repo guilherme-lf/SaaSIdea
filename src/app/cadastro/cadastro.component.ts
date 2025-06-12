@@ -45,23 +45,20 @@ export class CadastroComponent implements OnInit {
   onSubmit(): void {
     if (this.cadastroForm.valid) {
       const usuario = this.cadastroForm.value;
-      console.log('Cadastro enviado:', usuario);
-      alert('Cadastro realizado com sucesso!');
-      this.cadastroForm.reset();
-    } else {
-      alert('Preencha todos os campos obrigatórios corretamente.');
-    }
-
-    if (this.cadastroForm.valid) {
-      this.usuarioService.cadastrarUsuario(this.cadastroForm.value).subscribe({
+  
+      this.usuarioService.cadastrarUsuario(usuario).subscribe({
         next: (res) => {
           console.log('Usuário cadastrado com sucesso!', res);
+          alert('Cadastro realizado com sucesso!');
           this.cadastroForm.reset();
         },
         error: (err) => {
           console.error('Erro ao cadastrar usuário:', err);
+          alert('Erro ao cadastrar usuário.');
         }
       });
+    } else {
+      alert('Preencha todos os campos obrigatórios corretamente.');
     }
   }
 

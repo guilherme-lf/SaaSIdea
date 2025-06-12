@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <h2 class="text-center mb-4">Cadastro</h2>
 
-      <form [formGroup]="cadastroForm">
+      <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
 
         <!-- ===================== DADOS PESSOAIS ===================== -->
         <fieldset>
