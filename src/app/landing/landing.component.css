@@ -5,19 +5,62 @@
 }
 
 .image-banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-.image-banner img {
-  max-height: 100%;
-  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 600px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 40px;
+  background: linear-gradient(to bottom, #007bff, #2196f3);
+  border-radius: 10px;
+}
+
+.banner-imagem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
+}
+
+.banner-imagem img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
   object-fit: contain;
 }
+
+.banner-texto {
+  flex: 1;
+  max-width: 500px;
+  color: white;
+}
+
+.banner-texto h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.banner-texto p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.botao-banner {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  background-color: #003b80;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
 
 .scrolling-cards {
   scroll-snap-type: x mandatory;
