@@ -4,9 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
-
-localStorage.setItem('token', 'true');
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -27,11 +24,13 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, senha } = this.loginForm.value;
-  
+
       this.http.post('http://localhost:3000/login', { email, senha }).subscribe({
         next: (res) => {
+          // ✅ Login bem-sucedido
+          localStorage.setItem('token', 'true'); // agora está no lugar certo
           alert('Login realizado com sucesso!');
-          this.router.navigate(['/menu']); // Redireciona para /menu
+          this.router.navigate(['/menu']);
         },
         error: (err) => {
           if (err.status === 401) {
@@ -42,6 +41,5 @@ export class LoginComponent {
         }
       });
     }
-  }  
-
+  }
 }
