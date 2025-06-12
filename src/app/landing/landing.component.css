@@ -20,9 +20,10 @@
 .banner-imagem {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-basis: 50%;
+  padding-right: 40px;
 }
 
 .banner-imagem img {
@@ -36,6 +37,7 @@
   flex: 1;
   max-width: 500px;
   color: white;
+  padding-left: 80px;
 }
 
 .banner-texto h1 {
@@ -59,6 +61,8 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
+
 
 .scrolling-cards {
   scroll-snap-type: x mandatory;
