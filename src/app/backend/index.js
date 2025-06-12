@@ -9,13 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+require('dotenv').config();
+
 // Conexão com PostgreSQL
 const pool = new Pool({
-  user: 'guilherme',
-  host: 'localhost',
-  database: 'SaaS',
-  password: 'pamonha123',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 // Torna a pool acessível em todas as rotas
