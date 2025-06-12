@@ -20,7 +20,7 @@
 .banner-imagem {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   flex-basis: 50%;
   padding-right: 40px;
