@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthGuard } from './auth.guard';
 
@@ -28,5 +27,9 @@ export const routes: Routes = [
       path: 'login',
       loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
     },
+    {
+      path: 'cadastro-produto',
+      loadComponent: () => import('./cad-prod/cad-prod.component').then(m => m.CadProdComponent),
+    }
   ];
   

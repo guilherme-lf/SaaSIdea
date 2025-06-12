@@ -60,8 +60,6 @@
   cursor: pointer;
 }
 
-
-
 .scrolling-cards {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
