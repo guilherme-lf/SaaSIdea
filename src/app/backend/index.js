@@ -4,6 +4,7 @@ const { Pool } = require('pg');
 
 const usuarioRoutes = require('./routes/usuario');
 const produtoRoutes = require('./routes/prod');
+const movimentacaoRoutes = require('./routes/mov');
 
 const app = express();
 app.use(cors());
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 // Rotas organizadas
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/produtos', produtoRoutes);
+app.use('/api/movimentacoes', movimentacaoRoutes);
 
 // Inicia o servidor
 app.listen(3000, () => {
