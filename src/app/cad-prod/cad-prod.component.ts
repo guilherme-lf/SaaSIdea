@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-cad-prod',
   standalone: true,
-  imports: [ CommonModule, FormsModule ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cad-prod.component.html',
   styleUrl: './cad-prod.component.css'
 })
@@ -30,10 +30,45 @@ export class CadProdComponent {
   }
 
   cadastrarProduto() {
-    this.http.post('http://localhost:3000/api/produtos', this.produto)
+    this.http.post<any>('http://localhost:3000/api/produtos', this.produto)
       .subscribe({
-        next: res => alert('Produto cadastrado com sucesso!'),
-        error: err => alert('Erro ao cadastrar produto!')
+        next: (res) => {
+          alert('Produto cadastrado com sucesso!');
+
+          // Pegamos o ID do produto retornado
+          const produtoId = res.id || res.insertId; // adapte conforme o retorno do backend
+
+          // Criamos a movimentação de entrada
+          const movimentacao = {
+            produto_id: produtoId,
+            tipo: 'entrada',
+            quantidade: this.produto.quantidade,
+            observacao: 'Cadastro inicial de produto'
+          };
+
+          // Enviamos a movimentação para o backend
+          this.http.post('http://localhost:3000/api/movimentacoes', movimentacao)
+            .subscribe({
+              next: () => console.log('Movimentação registrada com sucesso.'),
+              error: err => console.error('Erro ao registrar movimentação:', err)
+            });
+
+          // Limpa o formulário
+          this.produto = {
+            nome: '',
+            categoria: '',
+            marca: '',
+            preco_venda: null,
+            preco_custo: null,
+            quantidade: 0,
+            validade: '',
+            codigo_barras: ''
+          };
+        },
+        error: (err) => {
+          alert('Erro ao cadastrar produto!');
+          console.error(err);
+        }
       });
   }
 }
