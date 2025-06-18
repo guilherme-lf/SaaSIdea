@@ -22,10 +22,20 @@
           <td>R$ {{ p.preco_venda | number:'1.2-2' }}</td>
           <td>R$ {{ p.preco_custo | number:'1.2-2' }}</td>
           <td>{{ p.quantidade }}</td>
-          <td>{{ p.validade ? (p.validade | date: 'dd/MM/yyyy') : '-' }}</td>
           <td>{{ p.codigo_barras }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="excluirProduto(p.id)">
+              Excluir
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Produtos Cadastrados</h2>
+        <button class="btn btn-success" (click)="irParaCadastro()">Adicionar Produto</button>
+    </div>
+
   </div>
   

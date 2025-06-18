@@ -31,6 +31,33 @@ async function cadastrarProduto(req, res) {
     console.error(error);
     res.status(500).send({ error: 'Erro ao cadastrar produto.' });
   }
+
 }
 
-module.exports = { cadastrarProduto };
+  // Lista todos os produtos
+async function listarProdutos(req, res) {
+  const pool = req.pool;
+  try {
+    const result = await pool.query('SELECT * FROM produtos ORDER BY id DESC');
+     res.status(200).json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'Erro ao listar produtos.' });
+  }
+}
+
+  // Exclui um produto por ID
+async function excluirProduto(req, res) {
+  const pool = req.pool;
+  const { id } = req.params;
+
+  try {
+    await pool.query('DELETE FROM produtos WHERE id = $1', [id]);
+    res.status(200).send({ message: 'Produto excluído com sucesso.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'Erro ao excluir produto.' });
+  }
+}
+
+module.exports = { cadastrarProduto, listarProdutos, excluirProduto };
