@@ -2,12 +2,11 @@
   <div class="logo">
     <i class="bi bi-music-note-beamed"></i>
     <span *ngIf="!isCollapsed">Music</span>
+  
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <i class="bi" [ngClass]="isCollapsed ? 'bi-list' : 'bi-x-lg'"></i>
+    </button>
   </div>
-
-  <button class="toggle-btn" (click)="toggleSidebar()">
-    <i class="bi" [ngClass]="isCollapsed ? 'bi-list' : 'bi-x-lg'"></i>
-  </button>
-
   <ul class="nav-links">
     <li>
       <i class="bi bi-house-door"></i>

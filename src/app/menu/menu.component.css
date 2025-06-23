@@ -1,58 +1,88 @@
-.offcanvas  {
-    width: 250px;
-}
-
-.custom-navbar {
-    background-color: rgb(255, 255, 255);
-}
-
 .sidebar {
-    height: 100vh;
-    width: 250px;
-    background-color: #111;
-    color: white;
-    padding: 20px 10px;
-    transition: width 0.3s;
-    overflow: hidden;
-    position: fixed;
-  }
-  
-  .sidebar.collapsed {
-    width: 70px;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .toggle-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .nav-links {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .nav-links li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .nav-links li:hover {
-    background-color: #333;
-  }
-  
+  height: 100vh;
+  width: 250px;
+  background-color: #111;
+  color: white;
+  padding: 20px 10px;
+  transition: width 0.3s;
+  overflow: hidden;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Modo colapsado */
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Ícones e texto do logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Esconde o texto do logo */
+.sidebar.collapsed .logo span {
+  display: none;
+}
+
+
+/* Ajuste o botão para ficar menor e mais próximo */
+.logo .toggle-btn {
+  margin-left: auto;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+
+
+/* Lista de links */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo padrão dos itens */
+.nav-links li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Esconde os textos ao colapsar */
+.sidebar.collapsed .nav-links span {
+  display: none;
+}
+
+/* Centraliza ícones quando colapsado */
+.sidebar.collapsed .nav-links li {
+  justify-content: center;
+}
+
+.sidebar.collapsed .logo {
+  justify-content: center;
+}
+
+/* Hover bonito */
+.nav-links li:hover {
+  background-color: #333;
+}
