@@ -19,12 +19,12 @@ export const routes: Routes = [
       path: 'cadastro',
       loadComponent: () => import('./cadastro/cadastro.component').then(m => m.CadastroComponent)
     },
-    {
-      path: 'home',
-      component: HomeComponent,
-      loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
-      canActivate: [AuthGuard], // Protege a rota de menu
-    },
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./home/home.component').then((m) => m.HomeComponent),
+        canActivate: [AuthGuard]
+      },
     {
       path: 'login',
       loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
