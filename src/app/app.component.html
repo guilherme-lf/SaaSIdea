@@ -1,3 +1,8 @@
-<app-menu *ngIf="exibirMenu"></app-menu>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="app-container" [class.collapsed]="isCollapsed">
+    <app-menu *ngIf="exibirMenu" (menuToggled)="onMenuToggle($event)"></app-menu>
+    <div class="app-main">
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  

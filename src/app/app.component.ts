@@ -17,12 +17,19 @@ export class AppComponent {
   title = 'custom';
   exibirMenu = true;
 
+  isCollapsed = false;
+
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
       const rotaAtual = this.router.url;
       this.exibirMenu = !['/cadastro', '/login', '/apresentacao'].includes(rotaAtual);
     });
   }
+
+  onMenuToggle(isCollapsed: boolean) {
+    this.isCollapsed = isCollapsed;
+  }
+  
   
 }
 

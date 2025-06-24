@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -11,8 +11,11 @@ export class MenuComponent {
 
   isCollapsed = false;
 
+  @Output() menuToggled = new EventEmitter<boolean>();
+
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
+    this.menuToggled.emit(this.isCollapsed);
   }
 
 }
