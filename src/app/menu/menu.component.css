@@ -1,46 +1,45 @@
 .sidebar {
   height: 100vh;
-  width: 250px;
+  width: 200px; /* REDUZI para 200px */
   background-color: rgba(0, 123, 255, 1);
   color: white;
-  padding: 20px 10px;
+  padding: 10px 5px; /* Menos padding */
   transition: width 0.3s;
   overflow: hidden;
   position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px; /* Menos espaço entre seções */
 }
 
 /* Modo colapsado */
 .sidebar.collapsed {
-  width: 70px;
+  width: 60px; /* Sidebar mais estreita quando colapsada */
 }
 
-/* ----------- LOGO + NAME + BOTÃO ----------- */
+/* -------- LOGO + NAME + BOTÃO -------- */
 .logo {
   display: flex;
-  flex-direction: row;             /* Alinha em linha quando aberto */
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;  /* Espaço entre logo, name e botão */
-  gap: 10px;
-  padding: 0 10px;
+  justify-content: space-between;
+  gap: 6px; /* Menos espaço entre logo e name */
+  padding: 0 5px;
 }
 
 .logo img {
-  width: 50px;
+  width: 50px; /* Menor logo */
   height: auto;
 }
 
 .logo span {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Texto menor */
   font-weight: bold;
 }
 
-/* Botão de toggle */
 .logo .toggle-btn {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Botão menor */
   background: none;
   border: none;
   color: white;
@@ -51,47 +50,56 @@
   align-items: center;
 }
 
-/* ----------- QUANDO COLAPSADO ----------- */
+/* Colapsado */
 .sidebar.collapsed .logo {
-  flex-direction: column;         /* Empilha logo + botão verticalmente */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .sidebar.collapsed .logo span {
-  display: none;                  /* Some o "Name" */
+  display: none;
 }
 
-/* ----------- LINKS DE NAVEGAÇÃO ----------- */
+/* -------- LINKS -------- */
 .nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Estilo padrão dos itens */
+/* Cada item */
 .nav-links li {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 5px;
+  padding: 4px 2px; /* Menor altura e menos espaço lateral */
   cursor: pointer;
   transition: background 0.3s;
   white-space: nowrap;
   overflow: hidden;
 }
 
-/* Esconde os textos dos links ao colapsar */
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  padding: 4px 6px; /* Área clicável menor, mas sem mexer no texto */
+  font-size: 14px; /* Mantendo o tamanho do texto como antes */
+}
+
+/* Esconde textos ao colapsar */
 .sidebar.collapsed .nav-links span {
   display: none;
 }
 
-/* Centraliza ícones quando colapsado */
 .sidebar.collapsed .nav-links li {
   justify-content: center;
 }
 
-/* Hover bonito */
+/* Hover */
 .nav-links li:hover {
   background-color: #39bddf;
 }

@@ -8,14 +8,17 @@
   </div>
 
   <ul class="nav-links">
-    <li routerLink="/cadastro-produto" routerLinkActive="active">
-      <i class="bi bi-plus-square"></i>
-      <span *ngIf="!isCollapsed">Cadastrar Produto</span>
+    <li>
+      <a routerLink="/cadastro-produto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-plus-square"></i>
+        <span *ngIf="!isCollapsed">Cadastrar Produto</span>
+      </a>
     </li>
-    
-    <li routerLink="/listagem-produtos" routerLinkActive="active">
-      <i class="bi bi-card-list"></i>
-      <span *ngIf="!isCollapsed">Listar Produtos</span>
+    <li>
+      <a routerLink="/listagem-produtos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-card-list"></i>
+        <span *ngIf="!isCollapsed">Listar Produtos</span>
+      </a>
     </li>
   </ul>
 </div>
