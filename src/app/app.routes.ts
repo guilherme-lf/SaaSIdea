@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 export const routes: Routes = [
@@ -19,8 +20,9 @@ export const routes: Routes = [
       loadComponent: () => import('./cadastro/cadastro.component').then(m => m.CadastroComponent)
     },
     {
-      path: 'menu',
-      component: AppComponent,
+      path: 'home',
+      component: HomeComponent,
+      loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
       canActivate: [AuthGuard], // Protege a rota de menu
     },
     {
