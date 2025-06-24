@@ -34,8 +34,8 @@ export const routes: Routes = [
       loadComponent: () => import('./cad-prod/cad-prod.component').then(m => m.CadProdComponent),
     },
     {
-      path: 'ListagemProdutos',
+      path: 'listagem-produtos',
       loadComponent: () => import('./list-prod/list-prod.component').then(m => m.ListProdComponent),
-    },
+    },    
   ];
   

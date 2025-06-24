@@ -1,17 +1,134 @@
+/* Container geral da aplicação */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
 .app-main {
   flex: 1;
-  margin-left: 250px;
+  margin-left: 250px; /* Sidebar aberta padrão */
   transition: margin-left 0.3s;
   display: flex;
   flex-direction: column;
 }
 
-.app-container.collapsed .app-main {
+/* Quando a sidebar estiver colapsada */
+.app-container.collapsed .app-main,
+.app-container.with-sidebar-collapsed .app-main {
   margin-left: 70px;
+}
+
+/* Quando NÃO houver sidebar (login, cadastro, apresentacao) */
+.app-container.no-sidebar .app-main {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Sidebar padrão */
+.sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: #1c2bff;
+  color: white;
+  padding: 20px 10px;
+  transition: width 0.3s;
+  overflow: hidden;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 0;
+  left: 0;
+}
+
+/* Modo colapsado */
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;   /* Coloca logo + name + botão lado a lado */
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 5px;
+}
+
+/* Esconde o texto do nome quando colapsado */
+.sidebar.collapsed .logo span {
+  display: none;
+}
+
+.logo .toggle-btn {
+  margin-left: auto;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lista de links de navegação */
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .nav-links span {
+  display: none;
+}
+
+.sidebar.collapsed .nav-links li {
+  justify-content: center;
+}
+
+.sidebar.collapsed .logo {
+  justify-content: center;
+}
+
+.nav-links li:hover {
+  background-color: #333;
+}
+
+/* Ajuste no conteúdo principal interno se tiver padding */
+.main-content {
+  transition: margin-left 0.3s;
+  padding: 20px;
+}
+
+/* Corrige o conteúdo em telas pequenas se quiser */
+/* Optional: Responsividade extra */
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0 !important;
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: 1000;
+  }
 }
