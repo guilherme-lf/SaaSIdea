@@ -2,21 +2,22 @@
   <div class="logo">
     <i class="bi bi-music-note-beamed"></i>
     <span *ngIf="!isCollapsed">Music</span>
-  
+
     <button class="toggle-btn" (click)="toggleSidebar()">
       <i class="bi" [ngClass]="isCollapsed ? 'bi-list' : 'bi-x-lg'"></i>
     </button>
   </div>
+
   <ul class="nav-links">
-    <li>
-      <i class="bi bi-house-door"></i>
-      <span *ngIf="!isCollapsed">Início</span>
+    <li routerLink="/cadastro-produto" routerLinkActive="active">
+      <i class="bi bi-plus-square"></i>
+      <span *ngIf="!isCollapsed">Cadastrar Produto</span>
     </li>
-    <li>
-      <i class="bi bi-compass"></i>
-      <span *ngIf="!isCollapsed">Explorar</span>
+    <li routerLink="/ListagemProdutos" routerLinkActive="active">
+      <i class="bi bi-card-list"></i>
+      <span *ngIf="!isCollapsed">Listar Produtos</span>
     </li>
-    <li>
+    <li routerLink="/biblioteca" routerLinkActive="active">
       <i class="bi bi-collection"></i>
       <span *ngIf="!isCollapsed">Biblioteca</span>
     </li>
