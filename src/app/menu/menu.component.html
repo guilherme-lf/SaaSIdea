@@ -8,12 +8,21 @@
   </div>
 
   <ul class="nav-links">
+    <!-- Botão para Home -->
+    <li>
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-house"></i>
+        <span *ngIf="!isCollapsed">Home</span>
+      </a>
+    </li>
+    <!-- Botão para Cadastro de Produtos -->
     <li>
       <a routerLink="/cadastro-produto" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <i class="bi bi-plus-square"></i>
         <span *ngIf="!isCollapsed">Cadastrar Produto</span>
       </a>
     </li>
+    <!-- Botão para Listagem de Produtos -->
     <li>
       <a routerLink="/listagem-produtos" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <i class="bi bi-card-list"></i>

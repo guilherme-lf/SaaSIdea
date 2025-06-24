@@ -21,18 +21,17 @@ export const routes: Routes = [
     loadComponent: () => import('./login/login.component').then(m => m.LoginComponent)
   },
   {
-    path: '',
+    path: 'home',
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
+  },
+  {
+    path: 'cadastro-produto',
     canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'cadastro-produto',
-        loadComponent: () => import('./cad-prod/cad-prod.component').then(m => m.CadProdComponent),
-      },
-      {
-        path: 'listagem-produtos',
-        loadComponent: () => import('./list-prod/list-prod.component').then(m => m.ListProdComponent),
-      }
-    ]
+    loadComponent: () => import('./cad-prod/cad-prod.component').then(m => m.CadProdComponent),
+  },
+  {
+    path: 'listagem-produtos',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./list-prod/list-prod.component').then(m => m.ListProdComponent),
   }
 ];
