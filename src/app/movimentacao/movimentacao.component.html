@@ -1,0 +1,36 @@
+<div class="card p-4 max-w-xl mx-auto mt-6">
+    <h2 class="text-xl font-bold mb-4">Registrar Movimentação de Estoque</h2>
+  
+    <form [formGroup]="movForm" (ngSubmit)="registrar()">
+      <div class="mb-3">
+        <label for="produto_id" class="form-label">ID do Produto</label>
+        <input id="produto_id" type="number" formControlName="produto_id" class="form-control" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de Movimentação</label>
+        <select id="tipo" formControlName="tipo" class="form-control" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+        </select>
+      </div>
+  
+      <div class="mb-3">
+        <label for="quantidade" class="form-label">Quantidade</label>
+        <input id="quantidade" type="number" formControlName="quantidade" class="form-control" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="observacao" class="form-label">Observação</label>
+        <textarea id="observacao" formControlName="observacao" class="form-control"></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="movForm.invalid">Registrar</button>
+    </form>
+  
+    <div *ngIf="mensagem" class="alert alert-info mt-3">
+      {{ mensagem }}
+    </div>
+  </div>
+  

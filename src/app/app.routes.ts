@@ -22,6 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [AuthGuard],
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
   },
   {
@@ -33,5 +34,10 @@ export const routes: Routes = [
     path: 'listagem-produtos',
     canActivate: [AuthGuard],
     loadComponent: () => import('./list-prod/list-prod.component').then(m => m.ListProdComponent),
-  }
+  },
+  {
+    path: 'movimentacao',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./movimentacao/movimentacao.component').then(m => m.MovimentacaoComponent),
+  },
 ];
