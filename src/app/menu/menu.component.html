@@ -29,5 +29,11 @@
         <span *ngIf="!isCollapsed">Listar Produtos</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/movimentacao" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-shuffle"></i>
+        <span *ngIf="!isCollapsed">Movimentação</span>
+      </a>
+    </li>
   </ul>
 </div>

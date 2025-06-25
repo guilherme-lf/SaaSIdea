@@ -1,15 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-movimentacao',
   standalone: true,
-  imports: [CommonModule, FormBuilder, FormGroup, Validators, RouterModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule
+  ],
   templateUrl: './movimentacao.component.html',
-  styleUrl: './movimentacao.component.css'
+  styleUrls: ['./movimentacao.component.css']
 })
 export class MovimentacaoComponent {
   movForm: FormGroup;
@@ -38,5 +43,4 @@ export class MovimentacaoComponent {
       }
     });
   }
-
 }
