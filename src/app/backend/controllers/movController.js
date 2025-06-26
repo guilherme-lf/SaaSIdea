@@ -28,6 +28,31 @@ async function registrarMovimentacao(req, res) {
       res.status(500).json({ erro: 'Erro ao registrar movimentação' });
     }
   }
+
+  async function listarMovimentacoes(req, res) {
+    const pool = req.pool;
   
-  module.exports = { registrarMovimentacao };
+    try {
+      const resultado = await pool.query(`
+        SELECT 
+          m.id,
+          m.produto_id,
+          p.nome AS produto_nome,
+          m.tipo,
+          m.quantidade,
+          m.observacao,
+          m.data
+        FROM movimentacoes m
+        JOIN produtos p ON m.produto_id = p.id
+        ORDER BY m.data DESC
+      `);
+  
+      res.status(200).json(resultado.rows);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ erro: 'Erro ao listar movimentações' });
+    }
+  }
+  
+  module.exports = { registrarMovimentacao, listarMovimentacoes };
   

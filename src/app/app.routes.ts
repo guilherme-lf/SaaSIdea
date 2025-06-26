@@ -40,4 +40,10 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     loadComponent: () => import('./movimentacao/movimentacao.component').then(m => m.MovimentacaoComponent),
   },
+  {
+    path: 'listagem-movimentacoes',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./list-mov/list-mov.component').then(m => m.ListMovComponent),
+   
+  }
 ];
