@@ -19,14 +19,33 @@ import { RouterModule } from '@angular/router';
 export class ListMovComponent implements OnInit {
   movimentacoes: any[] = [];
 
+  filtro = {
+    tipo: '',
+    data: ''
+  };
+
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    this.http.get<any[]>('http://localhost:3000/api/movimentacoes')
-      .subscribe({
-        next: (dados) => this.movimentacoes = dados,
-        error: (err) => console.error('Erro ao carregar movimentações', err)
-      });
+  ngOnInit(): void {
+    this.buscar(); // Carrega tudo inicialmente
   }
 
+  buscar(): void {
+    const params: any = {};
+
+    if (this.filtro.tipo) {
+      params.tipo = this.filtro.tipo;
+    }
+
+    if (this.filtro.data) {
+      params.data = this.filtro.data;
+    }
+
+    this.http.get<any[]>('http://localhost:3000/api/movimentacoes', { params })
+      .subscribe({
+        next: dados => this.movimentacoes = dados,
+        error: err => console.error('Erro ao buscar movimentações', err)
+      });
+  }
+  
 }
