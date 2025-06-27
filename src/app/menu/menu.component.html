@@ -35,5 +35,12 @@
         <span *ngIf="!isCollapsed">Movimentação</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/lista-movimentacoes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-list-columns-reverse"></i>
+        <span *ngIf="!isCollapsed">Lista Movimentações</span>
+      </a>
+    </li>
+
   </ul>
 </div>
