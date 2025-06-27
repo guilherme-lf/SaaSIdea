@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [ 
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule
