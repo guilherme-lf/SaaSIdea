@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @Component({
   selector: 'app-cad-prod',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, ZXingScannerModule],
   templateUrl: './cad-prod.component.html',
   styleUrl: './cad-prod.component.css'
 })
@@ -23,7 +24,18 @@ export class CadProdComponent {
     codigo_barras: ''
   };
 
+  showScanner = false;
+
   constructor(private http: HttpClient) {}
+
+  toggleScanner() {
+    this.showScanner = !this.showScanner;
+  }
+
+  onCodeResult(result: string) {
+    this.produto.codigo_barras = result;
+    this.showScanner = false;
+  }
 
   gerarCodigo() {
     const aleatorio = Math.floor(100000000000 + Math.random() * 900000000000);

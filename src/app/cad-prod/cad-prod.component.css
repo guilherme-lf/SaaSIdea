@@ -66,3 +66,10 @@
     background-color: #5a6268;
   }
   
+  .scanner-box {
+    margin-top: 1rem;
+    border: 2px dashed #ccc;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }

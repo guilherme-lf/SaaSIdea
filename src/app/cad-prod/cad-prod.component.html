@@ -2,29 +2,25 @@
 
 <form (ngSubmit)="cadastrarProduto()" #produtoForm="ngForm" class="form-container">
 
-  <input type="text" placeholder="Nome do produto" [(ngModel)]="produto.nome" name="nome" class="form-input" />
+  <!-- ... seus outros inputs ... -->
 
-  <input type="text" placeholder="Categoria" [(ngModel)]="produto.categoria" name="categoria" class="form-input" />
-
-  <input type="text" placeholder="Marca" [(ngModel)]="produto.marca" name="marca" class="form-input" />
-
-  <input type="number" step="0.01" placeholder="Preço de Venda" [(ngModel)]="produto.preco_venda" name="preco_venda" class="form-input" />
-
-  <input type="number" step="0.01" placeholder="Preço de Custo" [(ngModel)]="produto.preco_custo" name="preco_custo" class="form-input" />
-
-  <input type="number" placeholder="Quantidade em Estoque" [(ngModel)]="produto.quantidade" name="quantidade" class="form-input" />
-
-  <input type="date" placeholder="Validade" [(ngModel)]="produto.validade" name="validade" class="form-input" />
-
-  <!-- Código de barras + botão Gerar na mesma linha -->
   <div class="codigo-container">
     <input type="text" placeholder="Código de Barras" [(ngModel)]="produto.codigo_barras" name="codigo_barras" class="form-input" />
+    
     <button type="button" (click)="gerarCodigo()" class="btn-secundario">Gerar</button>
+    <button type="button" (click)="toggleScanner()" class="btn-secundario">Escanear</button>
   </div>
 
-  <!-- Botão Salvar alinhado à direita -->
+  <div *ngIf="showScanner" class="scanner-box">
+    <zxing-scanner
+      [start]="true"
+      [formats]="['EAN_13', 'EAN_8']"
+      (scanSuccess)="onCodeResult($event)">
+    </zxing-scanner>
+    <button type="button" class="btn-secundario mt-2" (click)="toggleScanner()">Fechar Scanner</button>
+  </div>
+
   <div class="botao-salvar">
     <button type="submit" class="btn-primario">Salvar</button>
   </div>
-
 </form>
