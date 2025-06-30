@@ -41,6 +41,12 @@
         <span *ngIf="!isCollapsed">Lista Movimentações</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/cadastro-fornecedor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-list-columns-reverse"></i>
+        <span *ngIf="!isCollapsed">Cad-fornecedores</span>
+      </a>
+    </li>
 
   </ul>
 </div>
