@@ -33,3 +33,20 @@ exports.listarFornecedores = async (req, res) => {
     res.status(500).json({ erro: 'Erro ao listar fornecedores' });
   }
 };
+
+exports.excluirFornecedor = async (req, res) => {
+    const { id } = req.params;
+  
+    try {
+      const result = await pool.query('DELETE FROM fornecedores WHERE id = $1', [id]);
+  
+      if (result.rowCount === 0) {
+        return res.status(404).json({ erro: 'Fornecedor não encontrado' });
+      }
+  
+      res.status(200).json({ mensagem: 'Fornecedor excluído com sucesso' });
+    } catch (error) {
+      console.error('Erro ao excluir fornecedor:', error);
+      res.status(500).json({ erro: 'Erro ao excluir fornecedor' });
+    }
+  };

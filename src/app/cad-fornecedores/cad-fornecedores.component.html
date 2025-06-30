@@ -1,45 +1,42 @@
-<h2>Cadastro de Fornecedores</h2>
-
-<form (ngSubmit)="cadastrar()" class="formulario">
-  <label>Nome:</label>
-  <input type="text" [(ngModel)]="fornecedor.nome" name="nome" required>
-
-  <label>CNPJ:</label>
-  <input type="text" [(ngModel)]="fornecedor.cnpj" name="cnpj">
-
-  <label>Email:</label>
-  <input type="email" [(ngModel)]="fornecedor.email" name="email">
-
-  <label>Telefone:</label>
-  <input type="text" [(ngModel)]="fornecedor.telefone" name="telefone">
-
-  <label>Endereço:</label>
-  <input type="text" [(ngModel)]="fornecedor.endereco" name="endereco">
-
-  <button type="submit">Cadastrar</button>
-</form>
-
-<hr>
-
-<h3>Lista de Fornecedores</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>CNPJ</th>
-      <th>Email</th>
-      <th>Telefone</th>
-      <th>Endereço</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let f of fornecedores">
-      <td>{{ f.nome }}</td>
-      <td>{{ f.cnpj }}</td>
-      <td>{{ f.email }}</td>
-      <td>{{ f.telefone }}</td>
-      <td>{{ f.endereco }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+    <h2>Cadastro de Fornecedores</h2>
+  
+    <form (ngSubmit)="cadastrar()">
+      <input [(ngModel)]="fornecedor.nome" name="nome" placeholder="Nome" required>
+      <input [(ngModel)]="fornecedor.cnpj" name="cnpj" placeholder="CNPJ">
+      <input [(ngModel)]="fornecedor.email" name="email" placeholder="Email">
+      <input [(ngModel)]="fornecedor.telefone" name="telefone" placeholder="Telefone">
+      <input [(ngModel)]="fornecedor.endereco" name="endereco" placeholder="Endereço">
+      <button type="submit">Cadastrar</button>
+    </form>
+  
+    <h3>Lista de Fornecedores</h3>
+  
+    <table *ngIf="fornecedores.length > 0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CNPJ</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Endereço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of fornecedores">
+          <td>{{ f.nome }}</td>
+          <td>{{ f.cnpj }}</td>
+          <td>{{ f.email }}</td>
+          <td>{{ f.telefone }}</td>
+          <td>{{ f.endereco }}</td>
+          <td class="actions">
+            <button (click)="excluirFornecedor(f.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="fornecedores.length === 0">Nenhum fornecedor cadastrado.</p>
+  </div>
+  

@@ -3,12 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Router } from 'express';
 
 @Component({
   selector: 'app-cad-fornecedores',
   standalone: true,
-  imports: [ CommonModule, FormsModule, RouterModule ],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './cad-fornecedores.component.html',
   styleUrl: './cad-fornecedores.component.css'
 })
@@ -33,7 +32,7 @@ export class CadFornecedoresComponent {
       .subscribe({
         next: () => {
           alert('Fornecedor cadastrado com sucesso!');
-          this.fornecedor = { nome: '', cnpj: '', email: '', telefone: '', endereco: '' };
+          this.limparFormulario();
           this.buscarFornecedores();
         },
         error: () => alert('Erro ao cadastrar fornecedor.')
@@ -45,5 +44,26 @@ export class CadFornecedoresComponent {
       .subscribe(res => this.fornecedores = res);
   }
 
+  excluirFornecedor(id: number) {
+    if (confirm('Tem certeza que deseja excluir este fornecedor?')) {
+      this.http.delete(`http://localhost:3000/api/fornecedores/${id}`)
+        .subscribe({
+          next: () => {
+            alert('Fornecedor excluído com sucesso!');
+            this.buscarFornecedores();
+          },
+          error: () => alert('Erro ao excluir fornecedor.')
+        });
+    }
+  }
 
+  limparFormulario() {
+    this.fornecedor = {
+      nome: '',
+      cnpj: '',
+      email: '',
+      telefone: '',
+      endereco: ''
+    };
+  }
 }
