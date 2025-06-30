@@ -5,6 +5,7 @@ const { Pool } = require('pg');
 const usuarioRoutes = require('./routes/usuario');
 const produtoRoutes = require('./routes/prod');
 const movimentacaoRoutes = require('./routes/mov');
+const fornecedorRoutes = require('./routes/fornecedores'); // 👈 adicionado aqui
 
 const app = express();
 app.use(cors());
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/produtos', produtoRoutes);
 app.use('/api/movimentacoes', movimentacaoRoutes);
+app.use('/api/fornecedores', fornecedorRoutes); // 👈 adicionada aqui
 
 // Inicia o servidor
 app.listen(3000, () => {
