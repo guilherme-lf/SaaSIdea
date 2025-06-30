@@ -1,0 +1,22 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 8px;
+  }
+  
+  input, button {
+    padding: 6px;
+  }
+  
+  table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
