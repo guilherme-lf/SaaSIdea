@@ -2,16 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { FiltroProdutoPipe } from './filtro-produto.pipe';
 
 @Component({
   selector: 'app-list-prod',
   standalone: true,
-  imports: [HttpClientModule, CommonModule, RouterModule],
+  imports: [HttpClientModule, CommonModule, RouterModule, FormsModule, FiltroProdutoPipe],
   templateUrl: './list-prod.component.html',
   styleUrls: ['./list-prod.component.css']
 })
+
 export class ListProdComponent implements OnInit {
   produtos: any[] = [];
+
+  filtro = {
+    nome: '',
+    categoria: '',
+    validade: ''
+  };
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -43,5 +52,9 @@ export class ListProdComponent implements OnInit {
         }
       });
     }
+  }
+  
+  limparFiltros() {
+    this.filtro = { nome: '', categoria: '', validade: '' };
   }
 }

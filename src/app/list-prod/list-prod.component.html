@@ -5,6 +5,23 @@
   </div>
 
   <div class="tabela-container">
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Buscar por nome"
+               [(ngModel)]="filtro.nome">
+      </div>
+      <div class="col-md-3">
+        <input type="text" class="form-control" placeholder="Categoria"
+               [(ngModel)]="filtro.categoria">
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control"
+               [(ngModel)]="filtro.validade">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-secondary w-100" (click)="limparFiltros()">Limpar</button>
+      </div>
+    </div>
     <table class="table custom-table">
       <thead>
         <tr>
@@ -20,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of produtos">
+        <tr *ngFor="let p of produtos | filtroProduto:filtro">
           <td>{{ p.nome }}</td>
           <td>{{ p.categoria }}</td>
           <td>{{ p.marca }}</td>
