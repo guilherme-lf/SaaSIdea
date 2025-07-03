@@ -25,9 +25,9 @@
 
   <div *ngIf="showScanner" class="scanner-box">
     <zxing-scanner
-    [formats]="['EAN_13', 'EAN_8']"
+    [formats]="formatsEnabled"
     (scanSuccess)="onCodeResult($event)">
-    </zxing-scanner>
+  </zxing-scanner>
     <button type="button" class="btn-secundario mt-2" (click)="toggleScanner()">Fechar Scanner</button>
   </div>
 
