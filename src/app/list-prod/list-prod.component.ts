@@ -22,15 +22,25 @@ export class ListProdComponent implements OnInit {
     validade: ''
   };
 
+  categoriasUnicas: string[] = [];
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.carregarProdutos();
   }
 
+  extrairCategoriasUnicas() {
+    const categorias = this.produtos.map(p => p.categoria);
+    this.categoriasUnicas = [...new Set(categorias)].filter(c => c); // remove duplicados e vazios
+  }
+
   carregarProdutos() {
     this.http.get<any[]>('http://localhost:3000/api/produtos').subscribe({
-      next: (res) => this.produtos = res,
+      next: (res) => {
+        this.produtos = res;
+        this.extrairCategoriasUnicas(); // <- aqui
+      },
       error: (err) => console.error('Erro ao carregar produtos:', err)
     });
   }
