@@ -45,6 +45,25 @@ export class CadProdComponent {
   }
 
   cadastrarProduto() {
-    // mesmo código
+    this.http.post('http://localhost:3000/api/produtos', this.produto)
+    .subscribe({
+      next: () => {
+        alert('Produto cadastrado com sucesso!');
+        // Limpar formulário
+        this.produto = {
+          nome: '',
+          categoria: '',
+          marca: '',
+          preco_venda: null,
+          preco_custo: null,
+          quantidade: 0,
+          validade: '',
+          codigo_barras: ''
+        };
+      },
+      error: () => {
+        alert('Erro ao cadastrar o produto.');
+      }
+    });
   }
 }
