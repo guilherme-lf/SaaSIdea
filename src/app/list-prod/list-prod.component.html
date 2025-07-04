@@ -1,7 +1,13 @@
 <div class="container mt-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2 class="titulo-produtos">Produtos Cadastrados</h2>
-    <button class="btn btn-success btn-add" (click)="irParaCadastro()">+ Adicionar Produto</button>
+    <button class="btn btn-success btn-add" (click)="irParaCadastro()">+ Adicionar Produto</button> <button class="btn btn-primary" (click)="exportarJSON()">Exportar JSON</button>
+    <input type="file" #fileInput style="display: none;" (change)="importarJSON($event)" accept=".json" />
+    <button class="btn btn-secondary" (click)="fileInput.click()">Importar JSON</button>
+    <button class="btn btn-success" (click)="exportarExcel()">Exportar Excel</button>
+    <input type="file" #fileInputExcel style="display: none;" (change)="importarExcel($event)" accept=".xlsx" />
+    <button class="btn btn-secondary" (click)="fileInputExcel.click()">Importar Excel</button>
+
   </div>
 
   <div class="tabela-container">
