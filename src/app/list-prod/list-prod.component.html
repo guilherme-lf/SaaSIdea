@@ -1,13 +1,32 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="titulo-produtos">Produtos Cadastrados</h2>
-    <button class="btn btn-success btn-add" (click)="irParaCadastro()">+ Adicionar Produto</button> <button class="btn btn-primary" (click)="exportarJSON()">Exportar JSON</button>
-    <input type="file" #fileInput style="display: none;" (change)="importarJSON($event)" accept=".json" />
-    <button class="btn btn-secondary" (click)="fileInput.click()">Importar JSON</button>
-    <button class="btn btn-success" (click)="exportarExcel()">Exportar Excel</button>
-    <input type="file" #fileInputExcel style="display: none;" (change)="importarExcel($event)" accept=".xlsx" />
-    <button class="btn btn-secondary" (click)="fileInputExcel.click()">Importar Excel</button>
-
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <h2 class="titulo-produtos mb-0">Produtos Cadastrados</h2>
+  
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <button class="btn btn-success btn-add" (click)="irParaCadastro()">
+        <i class="bi bi-plus-circle"></i> Adicionar Produto
+      </button>
+  
+      <div class="btn-group">
+        <button class="btn btn-primary" (click)="exportarJSON()" title="Exportar JSON">
+          <i class="bi bi-file-earmark-code"></i>
+        </button>
+        <button class="btn btn-secondary" (click)="fileInput.click()" title="Importar JSON">
+          <i class="bi bi-file-earmark-arrow-up"></i>
+        </button>
+        <input type="file" #fileInput style="display: none;" (change)="importarJSON($event)" accept=".json" />
+      </div>
+  
+      <div class="btn-group">
+        <button class="btn btn-success" (click)="exportarExcel()" title="Exportar Excel">
+          <i class="bi bi-file-earmark-spreadsheet"></i>
+        </button>
+        <button class="btn btn-secondary" (click)="fileInputExcel.click()" title="Importar Excel">
+          <i class="bi bi-file-earmark-arrow-up"></i>
+        </button>
+        <input type="file" #fileInputExcel style="display: none;" (change)="importarExcel($event)" accept=".xlsx" />
+      </div>
+    </div>
   </div>
 
   <div class="tabela-container">

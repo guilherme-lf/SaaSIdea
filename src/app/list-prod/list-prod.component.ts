@@ -38,6 +38,7 @@ export class ListProdComponent implements OnInit {
     this.categoriasUnicas = [...new Set(categorias)].filter(c => c); // remove duplicados e vazios
   }
 
+  // Método para filtrar produtos por nome, categoria e validade
   carregarProdutos() {
     this.http.get<any[]>('http://localhost:3000/api/produtos').subscribe({
       next: (res) => {
@@ -52,6 +53,7 @@ export class ListProdComponent implements OnInit {
     this.router.navigate(['/cadastro-produto']);
   }
 
+  // Método para excluir um produto
   excluirProduto(id: number) {
     if (confirm('Tem certeza que deseja excluir este produto?')) {
       this.http.delete(`http://localhost:3000/api/produtos/${id}`).subscribe({
@@ -70,6 +72,8 @@ export class ListProdComponent implements OnInit {
   limparFiltros() {
     this.filtro = { nome: '', categoria: '', validade: '' };
   }
+
+  // Método para exportar produtos para JSON e Excel
 
   exportarJSON() {
     this.http.get<any[]>('http://localhost:3000/api/produtos').subscribe({
@@ -167,6 +171,8 @@ export class ListProdComponent implements OnInit {
   
       alert('Importação concluída!');
     };
+
+    // // / // / / // /  // // // / // / // / / // // 
   
     reader.readAsArrayBuffer(file);
   }
