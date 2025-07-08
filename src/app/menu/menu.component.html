@@ -47,6 +47,18 @@
         <span *ngIf="!isCollapsed">Fornecedores</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/cadastro-fornecedor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-person-badge-fill"></i>
+        <span *ngIf="!isCollapsed">Atendentes</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/cadastro-fornecedor" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-person-badge-fill"></i>
+        <span *ngIf="!isCollapsed">Vendas</span>
+      </a>
+    </li>
 
   </ul>
 </div>
