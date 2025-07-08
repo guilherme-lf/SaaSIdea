@@ -49,5 +49,15 @@ export const routes: Routes = [
     path: 'cadastro-fornecedor',
     canActivate: [AuthGuard],
     loadComponent: () => import('./cad-fornecedores/cad-fornecedores.component').then(m => m.CadFornecedoresComponent),
+  },
+  {
+    path: 'atendentes',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./atendentes/atendentes.component').then(m => m.AtendentesComponent),
+  },
+  {
+    path: 'vendas',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./vendas/vendas.component').then(m => m.VendasComponent),
   }
 ];

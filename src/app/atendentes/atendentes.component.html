@@ -1,0 +1,31 @@
+<div class="container mt-4">
+    <h2>Cadastrar Atendente</h2>
+    <form (submit)="cadastrar(); $event.preventDefault()">
+      <div class="mb-2">
+        <input [(ngModel)]="atendente.nome" name="nome" class="form-control" placeholder="Nome" required />
+      </div>
+      <div class="mb-2">
+        <input [(ngModel)]="atendente.senha" name="senha" type="password" class="form-control" placeholder="Senha" required />
+      </div>
+      <button class="btn btn-primary" type="submit">Salvar</button>
+    </form>
+  
+    <hr />
+    <h3>Atendentes Cadastrados</h3>
+    <table class="table">
+      <thead>
+        <tr><th>ID</th><th>Nome</th><th>Ações</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of atendentes">
+          <td>{{ a.id }}</td>
+          <td>{{ a.nome }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="editar(a)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="excluir(a.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
