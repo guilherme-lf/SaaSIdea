@@ -60,4 +60,27 @@ async function excluirProduto(req, res) {
   }
 }
 
-module.exports = { cadastrarProduto, listarProdutos, excluirProduto };
+// Busca produto pelo código de barras
+async function buscarProdutoPorCodigoBarras(req, res) {
+  const pool = req.pool;
+  const { codigo } = req.params;
+
+  try {
+    const result = await pool.query(
+      'SELECT * FROM produtos WHERE codigo_barras = $1',
+      [codigo]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).send({ error: 'Produto não encontrado.' });
+    }
+
+    res.status(200).json(result.rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: 'Erro ao buscar produto.' });
+  }
+}
+
+
+module.exports = { cadastrarProduto, listarProdutos, excluirProduto, buscarProdutoPorCodigoBarras };
