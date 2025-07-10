@@ -1,64 +1,104 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
 .container {
-    max-width: 600px;
-    margin: auto;
-    background: #f9f9f9;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  
-  h2, h3 {
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  form input {
-    height: 42px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    padding: 0 12px;
-    transition: border-color 0.3s;
-  }
-  
-  form input:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 8px;
-  }
-  
-  hr {
-    margin: 30px 0;
-  }
-  
-  .table {
-    border-radius: 8px;
-    overflow: hidden;
-    background: white;
-    font-size: 15px;
-  }
-  
-  .table th {
-    background-color: #007bff;
-    color: white;
-    border: none;
-  }
-  
-  .table td, .table th {
-    vertical-align: middle;
-  }
-  
-  .btn-warning, .btn-danger {
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 6px;
-  }
-  
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2, h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #333;
+  text-align: center;
+}
+
+form input {
+  height: 36px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  margin-bottom: 12px;
+  transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #005fc1;
+}
+
+hr {
+  margin: 16px 0;
+}
+
+.table {
+  font-size: 14px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.table th, .table td {
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-warning, .btn-danger {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: 500;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e28d1b;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
