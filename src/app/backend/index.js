@@ -5,8 +5,10 @@ const { Pool } = require('pg');
 const usuarioRoutes = require('./routes/usuario');
 const produtoRoutes = require('./routes/prod');
 const movimentacaoRoutes = require('./routes/mov');
-const fornecedorRoutes = require('./routes/fornecedores'); // 👈 adicionado aqui
-const atendenteRoutes = require('./routes/atendentesRoutes'); // 👈 adicionado aqui
+const fornecedorRoutes = require('./routes/fornecedores');
+const atendenteRoutes = require('./routes/atendentesRoutes');
+
+
 
 const app = express();
 app.use(cors());

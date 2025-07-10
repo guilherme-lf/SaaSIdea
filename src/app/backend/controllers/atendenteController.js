@@ -55,12 +55,36 @@ async function cadastrarAtendente(req, res) {
       console.error(err);
       res.status(500).send({ error: 'Erro ao editar atendente' });
     }
+
+    async function loginAtendente(req, res) {
+      const pool = req.pool;
+      const { nome, senha } = req.body;
+    
+      try {
+        const result = await pool.query(
+          'SELECT id, nome FROM atendentes WHERE nome = $1 AND senha = $2',
+          [nome, senha]
+        );
+    
+        if (result.rows.length === 0) {
+          return res.status(401).send({ error: 'Nome ou senha inválidos' });
+        }
+    
+        const atendente = result.rows[0];
+        res.status(200).json({ message: 'Login realizado com sucesso', atendente });
+      } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: 'Erro ao realizar login' });
+      }
+    }
+    
   }
   
   module.exports = {
     cadastrarAtendente,
     listarAtendentes,
     excluirAtendente,
-    editarAtendente
+    editarAtendente,
+    loginAtendente
   };
   

@@ -11,5 +11,6 @@ router.post('/', cadastrarAtendente);
 router.get('/', listarAtendentes);
 router.delete('/:id', excluirAtendente);
 router.put('/:id', editarAtendente);
+router.post('/login', atendenteController.loginAtendente);
 
 module.exports = router;
