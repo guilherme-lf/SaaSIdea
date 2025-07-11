@@ -1,1 +1,58 @@
-<p>vendas works!</p>
+<div class="container mt-4">
+    <h3>Histórico de Vendas</h3>
+  
+    <table class="table table-hover mt-3">
+      <thead class="table-light">
+        <tr>
+          <th>#</th>
+          <th>Atendente</th>
+          <th>Data</th>
+          <th>Total</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venda of vendas">
+          <td>{{ venda.id }}</td>
+          <td>{{ venda.atendente }}</td>
+          <td>{{ venda.data | date: 'short' }}</td>
+          <td>{{ venda.total | currency:'BRL' }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="verDetalhes(venda)">
+              Detalhes
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Detalhes da venda -->
+    <div *ngIf="vendaSelecionada" class="card mt-4">
+      <div class="card-header">
+        Venda #{{ vendaSelecionada.id }} - {{ vendaSelecionada.atendente }}
+      </div>
+      <div class="card-body">
+        <p><strong>Data:</strong> {{ vendaSelecionada.data | date: 'short' }}</p>
+        <p><strong>Total:</strong> {{ vendaSelecionada.total | currency:'BRL' }}</p>
+  
+        <h6>Produtos:</h6>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Produto ID</th>
+              <th>Quantidade</th>
+              <th>Preço Unitário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of vendaSelecionada.produtos">
+              <td>{{ p.produto_id }}</td>
+              <td>{{ p.quantidade }}</td>
+              <td>{{ p.preco_unitario | currency:'BRL' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

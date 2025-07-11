@@ -7,7 +7,7 @@ const produtoRoutes = require('./routes/prod');
 const movimentacaoRoutes = require('./routes/mov');
 const fornecedorRoutes = require('./routes/fornecedores');
 const atendenteRoutes = require('./routes/atendentesRoutes');
-
+const vendasRoutes = require('./routes/vendas');
 
 
 const app = express();
@@ -37,6 +37,7 @@ app.use('/api/produtos', produtoRoutes);
 app.use('/api/movimentacoes', movimentacaoRoutes);
 app.use('/api/fornecedores', fornecedorRoutes);
 app.use('/api/atendentes', require('./routes/atendentesRoutes')); 
+app.use('/api/vendas', require('./routes/vendasRouter'));
 
 // Inicia o servidor
 app.listen(3000, () => {
