@@ -1,0 +1,22 @@
+.card {
+    border-radius: 1rem;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card-title {
+    letter-spacing: 0.05em;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .table th {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  

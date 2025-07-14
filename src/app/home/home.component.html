@@ -1,50 +1,24 @@
-<div class="container mt-4">
-    <h2 class="mb-4">Dashboard Administrativo</h2>
+<div class="container my-5">
+    <h2 class="mb-4 fw-bold text-center">Dashboard Administrativo</h2>
   
     <!-- Cards de Resumo -->
-    <div class="row mb-4" *ngIf="isAdmin">
-      <div class="col-md-3">
-        <div class="card text-white bg-primary mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Produtos</h5>
-            <p class="card-text">{{ resumo[0].valor }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-white bg-success mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Vendas</h5>
-            <p class="card-text">{{ resumo[1].valor }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-white bg-warning mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Movimentações</h5>
-            <p class="card-text">{{ resumo[2].valor }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card text-white bg-danger mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Atendentes</h5>
-            <p class="card-text">{{ resumo[3].valor }}</p>
+    <div class="row g-4 mb-5" *ngIf="isAdmin">
+      <div class="col-md-3" *ngFor="let item of resumo; let i = index">
+        <div class="card h-100 shadow-sm border-0 text-white" [ngClass]="cardColor(i)">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center">
+            <h5 class="card-title fs-6 text-uppercase">{{ item.titulo }}</h5>
+            <p class="card-text fs-4 fw-semibold">{{ item.valor }}</p>
           </div>
         </div>
       </div>
     </div>
   
     <!-- Últimas Vendas -->
-    <div class="card mb-4" *ngIf="isAdmin">
-      <div class="card-header">
-        Últimas Vendas
-      </div>
+    <div class="card shadow-sm border-0 mb-5" *ngIf="isAdmin">
+      <div class="card-header bg-white fw-semibold">Últimas Vendas</div>
       <div class="card-body p-0">
-        <table class="table table-striped mb-0">
-          <thead>
+        <table class="table table-hover mb-0 align-middle">
+          <thead class="table-light">
             <tr>
               <th>ID</th>
               <th>Data</th>
@@ -57,7 +31,7 @@
               <td>{{ venda.id }}</td>
               <td>{{ venda.data | date: 'short' }}</td>
               <td>{{ venda.atendente }}</td>
-              <td>R$ {{ venda.total.toFixed(2) }}</td>
+              <td class="fw-semibold">R$ {{ venda.total.toFixed(2) }}</td>
             </tr>
           </tbody>
         </table>
@@ -65,10 +39,8 @@
     </div>
   
     <!-- Gráfico de Vendas -->
-    <div class="card" *ngIf="isAdmin">
-      <div class="card-header">
-        Gráfico de Vendas da Semana
-      </div>
+    <div class="card shadow-sm border-0" *ngIf="isAdmin">
+      <div class="card-header bg-white fw-semibold">Gráfico de Vendas da Semana</div>
       <div class="card-body">
         <canvas id="graficoVendas" height="100"></canvas>
       </div>
