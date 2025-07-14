@@ -2,36 +2,36 @@
     <h2 class="mb-4">Dashboard Administrativo</h2>
   
     <!-- Cards de Resumo -->
-    <div class="row mb-4">
-      <div class="col-md-3" *ngIf="isAdmin">
+    <div class="row mb-4" *ngIf="isAdmin">
+      <div class="col-md-3">
         <div class="card text-white bg-primary mb-3">
           <div class="card-body">
             <h5 class="card-title">Produtos</h5>
-            <p class="card-text">{{ totalProdutos }}</p>
+            <p class="card-text">{{ resumo[0].valor }}</p>
           </div>
         </div>
       </div>
-      <div class="col-md-3" *ngIf="isAdmin">
+      <div class="col-md-3">
         <div class="card text-white bg-success mb-3">
           <div class="card-body">
             <h5 class="card-title">Vendas</h5>
-            <p class="card-text">{{ totalVendas }}</p>
+            <p class="card-text">{{ resumo[1].valor }}</p>
           </div>
         </div>
       </div>
-      <div class="col-md-3" *ngIf="isAdmin">
+      <div class="col-md-3">
         <div class="card text-white bg-warning mb-3">
           <div class="card-body">
             <h5 class="card-title">Movimentações</h5>
-            <p class="card-text">{{ totalMovimentacoes }}</p>
+            <p class="card-text">{{ resumo[2].valor }}</p>
           </div>
         </div>
       </div>
-      <div class="col-md-3" *ngIf="isAdmin">
+      <div class="col-md-3">
         <div class="card text-white bg-danger mb-3">
           <div class="card-body">
             <h5 class="card-title">Atendentes</h5>
-            <p class="card-text">{{ totalAtendentes }}</p>
+            <p class="card-text">{{ resumo[3].valor }}</p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
   
-    <!-- Gráfico de Vendas (opcional) -->
+    <!-- Gráfico de Vendas -->
     <div class="card" *ngIf="isAdmin">
       <div class="card-header">
         Gráfico de Vendas da Semana
@@ -74,35 +74,4 @@
       </div>
     </div>
   </div>
-  
-  </div>
-  
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('grafico-vendas');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        datasets: [{
-          label: 'Vendas (R$)',
-          data: [300, 450, 120, 600, 750, 200, 400],
-          backgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { callback: value => `R$ ${value}` }
-          }
-        }
-      }
-    });
-  </script>
   

@@ -4,15 +4,15 @@ import { RouterModule } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { DashboardService } from './dashboard.service';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ CommonModule, RouterModule ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  isAdmin: boolean = false; // <-- adicionada
   resumo = [
     { titulo: 'Produtos', valor: 0 },
     { titulo: 'Vendas', valor: 0 },
@@ -22,12 +22,20 @@ export class HomeComponent implements OnInit {
 
   ultimasVendas: any[] = [];
 
+  private chart: Chart | null = null;
+
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
+    this.verificarPerfil();
     this.carregarResumo();
     this.carregarUltimasVendas();
-    this.carregarGrafico();
+    setTimeout(() => this.carregarGrafico(), 100); // garante que o canvas exista no DOM
+  }
+
+  verificarPerfil() {
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+    this.isAdmin = usuario?.perfil === 'admin';
   }
 
   carregarResumo() {
@@ -49,19 +57,36 @@ export class HomeComponent implements OnInit {
     this.dashboardService.getVendasPorSemana().subscribe(data => {
       const ctx = document.getElementById('graficoVendas') as HTMLCanvasElement;
 
-      new Chart(ctx, {
+      if (this.chart) {
+        this.chart.destroy(); // evita criar múltiplos gráficos
+      }
+
+      this.chart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: data.labels,
           datasets: [{
-            label: 'Vendas',
+            label: 'Vendas na Semana',
             data: data.valores,
             borderColor: 'blue',
-            fill: false
+            backgroundColor: 'rgba(0, 0, 255, 0.1)',
+            fill: true,
+            tension: 0.3
           }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top'
+            },
+            title: {
+              display: true,
+              text: 'Vendas por Dia'
+            }
+          }
         }
       });
     });
   }
-
 }
