@@ -1,1 +1,120 @@
-<p>home works!</p>
+<div class="container mt-4">
+
+    <h2 class="mb-4">Painel Administrativo</h2>
+  
+    <!-- Cards Resumo -->
+    <div class="row mb-4">
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-primary h-100">
+          <div class="card-body">
+            <h5 class="card-title">Produtos</h5>
+            <p class="card-text fs-4">128</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-success h-100">
+          <div class="card-body">
+            <h5 class="card-title">Vendas Hoje</h5>
+            <p class="card-text fs-4">R$ 1.240,00</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-warning h-100">
+          <div class="card-body">
+            <h5 class="card-title">Movimentações</h5>
+            <p class="card-text fs-4">15</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card text-white bg-danger h-100">
+          <div class="card-body">
+            <h5 class="card-title">Atendentes</h5>
+            <p class="card-text fs-4">4 ativos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Últimas Vendas -->
+    <div class="card mb-4">
+      <div class="card-header">
+        Últimas Vendas
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Atendente</th>
+              <th>Data</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#1234</td>
+              <td>João</td>
+              <td>14/07/2025</td>
+              <td>R$ 250,00</td>
+            </tr>
+            <tr>
+              <td>#1235</td>
+              <td>Maria</td>
+              <td>14/07/2025</td>
+              <td>R$ 480,00</td>
+            </tr>
+            <tr>
+              <td>#1236</td>
+              <td>Pedro</td>
+              <td>14/07/2025</td>
+              <td>R$ 135,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <!-- Gráfico de Vendas -->
+    <div class="card mb-5">
+      <div class="card-header">
+        Vendas da Semana
+      </div>
+      <div class="card-body">
+        <canvas id="grafico-vendas" height="100"></canvas>
+      </div>
+    </div>
+  
+  </div>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('grafico-vendas');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        datasets: [{
+          label: 'Vendas (R$)',
+          data: [300, 450, 120, 600, 750, 200, 400],
+          backgroundColor: '#007bff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { callback: value => `R$ ${value}` }
+          }
+        }
+      }
+    });
+  </script>
+  
