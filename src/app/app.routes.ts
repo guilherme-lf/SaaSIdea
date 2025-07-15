@@ -59,5 +59,10 @@ export const routes: Routes = [
     path: 'vendas',
     canActivate: [AuthGuard],
     loadComponent: () => import('./vendas/vendas.component').then(m => m.VendasComponent),
+  },
+  {
+    path: 'download',
+    canActivate: [AuthGuard],
+    loadComponent: () => import('./download/download.component').then(m => m.DownloadComponent),
   }
 ];
