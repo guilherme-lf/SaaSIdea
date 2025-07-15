@@ -59,6 +59,12 @@
         <span *ngIf="!isCollapsed">Vendas</span>
       </a>
     </li>
+    <li>
+      <a routerLink="/download" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-receipt"></i>
+        <span *ngIf="!isCollapsed">Download</span>
+      </a>
+    </li>
 
   </ul>
 </div>
